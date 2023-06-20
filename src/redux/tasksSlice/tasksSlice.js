@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const  tasksFetch = createAsyncThunk('tasks/fetchTasks', async () => {
-    return await fetch('http://localhost:3001/tods?_limit=10').then(result => result.json())
+    return await fetch('http://localhost:3001/todos?_limit=10').then(result => result.json())
 
 })
 
