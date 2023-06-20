@@ -35,7 +35,9 @@ code {
 body{
   font-family: var(--font-family);
   font-size: var(--font-size);
+  font-weight: 500;
   background-color: var(--pageBg);
+  color: var(--text-default);
 }
 
 .container{
@@ -46,4 +48,5 @@ body{
 .shadow-container{
   box-shadow: var(--shadow);
   border-radius: var(--radius);
+  overflow: hidden;
 }

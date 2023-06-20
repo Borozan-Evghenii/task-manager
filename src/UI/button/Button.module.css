@@ -3,8 +3,12 @@
     border: none;
     background-color: transparent;
     color: var(--text-default);
+    font-family: var(--font-family);
+    cursor: pointer;
 }
-
+.button:hover{
+    color: var(--text-accent);
+}
 .buttonActive{
     color: var(--text-accent);
 }

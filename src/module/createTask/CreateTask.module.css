@@ -1,0 +1,15 @@
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 18px 23px;
+    background-color: var(--blockBg);
+    gap: 23px;
+}
+
+.inputIndicator{
+    width: 26px;
+    height: 26px;
+    border-radius: 100px;
+    border: 1px solid var(--text-default);
+}

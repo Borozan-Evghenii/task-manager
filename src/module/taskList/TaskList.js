@@ -1,35 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TaskItem from "../../components/taskItem/TaskItem";
+import {useDispatch, useSelector} from "react-redux";
+import { tasksFetch, updateStatus} from "../../redux/tasksSlice/tasksSlice";
 
 function TaskList() {
-  const data = [
-    {
-      "userId": 1,
-      "id": 1,
-      "title": "delectus aut autem",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 2,
-      "title": "quis ut nam facilis et officia qui",
-      "completed": true
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "fugiat veniam minus",
-      "completed": false
-    },
-  ]
+    const {tasks, status} = useSelector(state => state.tasks)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(tasksFetch())
+    }, [])
+
+    if (status.status === 'pending'){
+        return (
+            <h1>Loading</h1>
+        )
+    } else if(status.status === 'rejected'){
+        return <h1> error { status.message}</h1>
+    }
+
   return (
-      <div className={'shadow-container'}>
-        {
-          data.map(item =>
-            <TaskItem status={item.completed} title={item.title}/>
+      <>
+        {tasks.map(item =>
+            <TaskItem
+                key={item.id}
+                status={item.completed}
+                title={item.title}
+                onChange={()=> dispatch(updateStatus(item.id))}
+            />
           )
         }
-      </div>
+      </>
   );
 }
 

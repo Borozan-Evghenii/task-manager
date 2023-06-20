@@ -6,7 +6,9 @@
     color: var(--text-secondary);
     padding: 18px 23px;
     gap: 23px;
+    border-bottom: 1px solid var(--pageBg);
 }
+
 
 .itemTitleActive{
     text-decoration: line-through;

@@ -1,12 +1,19 @@
 import React from 'react';
 import TaskList from "../module/taskList/TaskList";
-import Filter from "../components/filter/Filter";
+import Filter from "../UI/filter/Filter";
+import ActionBar from "../module/actionBar/ActionBar";
+import CreateTask from "../module/createTask/CreateTask";
 
-function TodoApp(props) {
+function TodoApp() {
   return (
       <>
-        <TaskList />
-        <Filter/>
+          <div style={{marginBottom: "20px" }} className="shadow-container">
+              <CreateTask />
+          </div>
+        <div className="shadow-container">
+            <ActionBar />
+            <TaskList />
+        </div>
       </>
   );
 }
