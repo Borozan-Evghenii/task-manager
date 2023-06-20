@@ -1,0 +1,30 @@
+.checkbox{
+    border-radius: 100px;
+    border: 1px solid var(--text-default);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.indicator{
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 100px;
+}
+
+.checkbox:hover .indicator{
+    background-color: var(--text-accent);
+    opacity: .3;
+}
+
+.checkboxActive .indicator{
+    background-color: var(--text-accent);
+}
+
+.hidden{
+    display: none;
+    visibility: hidden;
+}

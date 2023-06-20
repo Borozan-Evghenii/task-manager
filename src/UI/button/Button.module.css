@@ -1,0 +1,10 @@
+.button{
+    font-size: 14px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-default);
+}
+
+.buttonActive{
+    color: var(--text-accent);
+}

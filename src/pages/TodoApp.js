@@ -1,11 +1,13 @@
 import React from 'react';
+import TaskList from "../module/taskList/TaskList";
+import Filter from "../components/filter/Filter";
 
 function TodoApp(props) {
   return (
-      <div>
-
-
-      </div>
+      <>
+        <TaskList />
+        <Filter/>
+      </>
   );
 }
 

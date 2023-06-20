@@ -1,0 +1,13 @@
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--blockBg);
+    color: var(--text-secondary);
+    padding: 18px 23px;
+    gap: 23px;
+}
+
+.itemTitleActive{
+    text-decoration: line-through;
+}
