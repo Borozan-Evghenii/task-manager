@@ -2,23 +2,21 @@ import React, {useEffect} from 'react';
 import TaskItem from "../../components/taskItem/TaskItem";
 import {useDispatch, useSelector} from "react-redux";
 import { tasksFetch, updateStatus} from "../../redux/tasksSlice/tasksSlice";
+import {selectTaskByFilter} from "../../redux/tasksSlice/tasksSelectors";
 
 function TaskList() {
-    const {tasks, status} = useSelector(state => state.tasks)
+    const tasks = useSelector(selectTaskByFilter)
+    const status = useSelector(state => state.status)
     const dispatch = useDispatch()
 
     useEffect(()=>{
         dispatch(tasksFetch())
     }, [])
 
-    if (status.status === 'pending'){
-        return (
-            <h1>Loading</h1>
-        )
-    } else if(status.status === 'rejected'){
-        return <h1> error { status.message}</h1>
-    }
-
+  console.log(status)
+  if (status){
+    return <h1>Loading</h1>
+  }
   return (
       <>
         {tasks.map(item =>

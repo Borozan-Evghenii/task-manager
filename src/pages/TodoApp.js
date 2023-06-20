@@ -1,6 +1,6 @@
 import React from 'react';
 import TaskList from "../module/taskList/TaskList";
-import Filter from "../UI/filter/Filter";
+import Filter from "../components/filter/Filter";
 import ActionBar from "../module/actionBar/ActionBar";
 import CreateTask from "../module/createTask/CreateTask";
 
