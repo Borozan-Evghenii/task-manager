@@ -6,17 +6,12 @@ import {selectTaskByFilter} from "../../redux/tasksSlice/tasksSelectors";
 
 function TaskList() {
     const tasks = useSelector(selectTaskByFilter)
-    const status = useSelector(state => state.status)
     const dispatch = useDispatch()
 
     useEffect(()=>{
         dispatch(tasksFetch())
     }, [])
 
-  console.log(status)
-  if (status){
-    return <h1>Loading</h1>
-  }
   return (
       <>
         {tasks.map(item =>
