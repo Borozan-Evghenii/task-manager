@@ -1,11 +1,11 @@
 import React from 'react';
 import style from './LeftCounter.module.css'
-import {useSelector} from "react-redux";
-import {selectLeftTasks} from "../../redux/tasksSlice/tasksSelectors";
+import {useGetTasksQuery} from "../../redux/tasksApi";
 function LeftCounter() {
-  const count = useSelector(selectLeftTasks)
+  const {data = []} = useGetTasksQuery()
+  const counter = data.filter(item => !item.completed)
   return (
-      <div className={style.counter}>{count.length} items left</div>
+      <div className={style.counter}> {counter.length} items left</div>
   );
 }
 

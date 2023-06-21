@@ -1,25 +1,24 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import TaskItem from "../../components/taskItem/TaskItem";
-import {useDispatch, useSelector} from "react-redux";
-import { tasksFetch, updateStatus} from "../../redux/tasksSlice/tasksSlice";
-import {selectTaskByFilter} from "../../redux/tasksSlice/tasksSelectors";
+import {useGetTasksQuery, useUpdateStatusMutation} from "../../redux/tasksApi";
 
 function TaskList() {
-    const tasks = useSelector(selectTaskByFilter)
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(tasksFetch())
-    }, [])
+    const {data = [], error, isLoading} = useGetTasksQuery()
+    const [changeStatus, result] = useUpdateStatusMutation()
+    if (isLoading) {
+        return <h1>Data Loading</h1>
+    }else if (error){
+       return <h1>{error.status}</h1>
+    }
 
   return (
       <>
-        {tasks.map(item =>
+        {data.map(item =>
             <TaskItem
                 key={item.id}
                 status={item.completed}
                 title={item.title}
-                onChange={()=> dispatch(updateStatus(item.id))}
+                onClick={()=> changeStatus({id: item.id, status: !item.completed})}
             />
           )
         }
