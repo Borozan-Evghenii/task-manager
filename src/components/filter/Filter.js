@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 function Filter() {
   const filter = useSelector(state => state.filter.filter)
   const dispatch = useDispatch()
+
   return (
       <div className={style.filter}>
         <Button active={filter === 'all'} onClick={()=> dispatch(changeFilter('all'))}>All</Button>
