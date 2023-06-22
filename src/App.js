@@ -1,10 +1,8 @@
 import TodoApp from "./pages/TodoApp";
-import Button from "./UI/button/Button";
-import Checkbox from "./UI/checkbox/Checkbox";
-import Input from "./UI/input/Input";
-import TaskItem from "./components/taskItem/TaskItem";
+import {tasksApi} from "./redux/tasksApi";
 
 function App() {
+    console.log(tasksApi)
   return (
     <div className="container">
       <TodoApp />
