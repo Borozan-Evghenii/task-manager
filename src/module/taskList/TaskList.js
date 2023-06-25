@@ -1,32 +1,20 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import TaskItem from "../../components/taskItem/TaskItem";
 import {useGetTasksQuery, useUpdateStatusMutation} from "../../redux/tasksApi";
-import {createSelector} from "@reduxjs/toolkit";
+import {useSelector} from "react-redux";
 
 function TaskList() {
-    const filter = true
-
-    const selectTasksByFilter = useMemo(()=> {
-    return createSelector(
-        [res => res.data, (res, filter)=> filter],
-        (data, filter ) => data.filter(item => item.completed === filter) ?? []
-    )
-}, [])
-
-    const {data = [], error, isLoading} = useGetTasksQuery(undefined, {
-        selectFromResul: result => ({
-            ...result,
-            data: selectTasksByFilter(result, filter)
-        })
-    })
-
-
+    const filter = useSelector(state => state.filter.filter)
     const [changeStatus, result] = useUpdateStatusMutation()
+   const {data = [], error, isLoading} = useGetTasksQuery(filter)
 
-
-
-
-
+    //Cache Selector
+    // const {data} = useGetTasksQuery('', {
+    //     selectFromResult: (res) => ({
+    //             ...res,
+    //             data: res.data?.filter(e => filter === 'active' ? e.completed === false : filter === 'completed' ? e.completed === true : e)
+    //     })
+    // })
 
 
     if (isLoading) {
@@ -37,7 +25,7 @@ function TaskList() {
 
   return (
       <>
-        {data.map(item =>
+        {data?.map(item =>
             <TaskItem
                 key={item.id}
                 status={item.completed}

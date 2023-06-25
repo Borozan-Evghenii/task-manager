@@ -7,16 +7,11 @@ export const tasksApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001/'}),
     endpoints: (builder) => ({
         getTasks: builder.query({
-        query: () => `todos?_limit=5&_sort=id&_order=desc`,
+            query: (filter) => `todos?${filter === 'active'? 'completed=false' : filter === 'completed'? 'completed=true' : ''}&_sort=id&_order=desc`,
             providesTags: (result) =>
                 result ? [...result.map(({ id }) => ({ type: 'Tasks', id })),
                         { type: 'Tasks', id: 'LIST' },]
                     : [{ type: 'Tasks', id: 'LIST' }],
-        }),
-        getTasksByFilter: builder.query({
-            query: (filter) =>
-                `todos?_limit=5&${filter === 'active' ? `completed=false` : ``}${filter === 'completed' ? `completed=true` : ``}`,
-            invalidatesTags: [{ type: 'Tasks', id: 'LIST' }],
         }),
         updateStatus: builder.mutation({
             query: ({id, status}) => ({
