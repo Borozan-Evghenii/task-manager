@@ -7,9 +7,9 @@ This to-do list application provides essential features for effective task manag
 <table>
   <tbody>
     <tr>
-      <th>React</th>
-      <th>Redux Toolkit</th>
-      <th>JSON Placeholder</th>
+      <th>✏️ React</th>
+      <th>✏️ Redux Toolkit</th>
+      <th>✏️ JSON Placeholder</th>
     </tr>
   </tbody>
 </table>
